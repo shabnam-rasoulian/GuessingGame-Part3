@@ -68,3 +68,9 @@ Game.prototype.provideHint = function() {
 function newGame() {
   return new Game();
 }
+
+$(document).ready(function() {
+  $("#submit").on("click", function() {
+    console.log("Submit button clicked!");
+  });
+});
