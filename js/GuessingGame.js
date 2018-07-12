@@ -106,4 +106,15 @@ $(document).ready(function() {
       submitGuess(game);
     }
   });
+  $("#reset").click(function() {
+    game = newGame();
+    $("#title").text("Welcome to Guessing Game!");
+    $("#subtitle").text("Guess a number between 1-100!");
+    $(".guess").text("!");
+    $("#submit, #hint").prop("disabled", false);
+  });
+  $("#hint").click(function() {
+    const hint = game.provideHint();
+    $("#title").text("The winning number is " + hint[0] + ", " + hint[1] + " or " + hint[2] + ".");
+  });
 });
