@@ -69,8 +69,21 @@ function newGame() {
   return new Game();
 }
 
+function submitGuess(game) {
+  const playerInput = $("#input").val();
+  $("#input").val("");
+  const output = game.playersGuessSubmission(playerInput);
+  console.log(output);
+ }
+
 $(document).ready(function() {
-  $("#submit").on("click", function() {
-    console.log("Submit button clicked!");
+  let game = newGame();
+  $("#submit").click(function() {
+    submitGuess(game);
+  });
+  $("#input").keypress(function(event) {
+    if (event.which === 13) {
+      submitGuess(game);
+    }
   });
 });
