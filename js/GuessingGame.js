@@ -73,8 +73,28 @@ function submitGuess(game) {
   const playerInput = $("#input").val();
   $("#input").val("");
   const output = game.playersGuessSubmission(playerInput);
-  console.log(output);
- }
+  if (output === "You have already guessed that number.") {
+    $("#title").text("Already guessed that number! Guess again.");
+  } else {
+    if (output === "You Win!" || output === "You Lose.") {
+      $("#title").text(output);
+      $("#subtitle").text("Reset to play again.");
+      $("#submit, #hint").prop("disabled", true);
+      $("#message").text("");
+    }
+    if (output !== "You Win!") {
+      $("ul li:nth-child(" + game.pastGuesses.length + ")").text(playerInput);
+      if (output === "You Lose.") {
+        return;
+      }
+      if (game.isLower()) {
+        $("#message").text(output + " Guess Higher!");
+      } else {
+        $("#message").text(output + " Guess Lower!");
+      }
+    }
+  }
+}
 
 $(document).ready(function() {
   let game = newGame();
