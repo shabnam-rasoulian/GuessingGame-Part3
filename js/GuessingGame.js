@@ -31,6 +31,7 @@ Game.prototype.isLower = function() {
 
 Game.prototype.playersGuessSubmission = function(guess) {
   if (guess < 1 || guess > 100 || isNaN(guess)) {
+    $("#title").text("That is an invalid guess. Guess again.");
     throw "That is an invalid guess.";
   }
   this.playersGuess = guess;
