@@ -62,13 +62,6 @@ main {
   font-size: 1.5em;
 }
 
-#message {
-  height: 10%;
-  padding: 1%;
-  font-size: 1.5em;
-  color: #fff;
-}
-
 footer {
   height: 10%;
   background-color: white;

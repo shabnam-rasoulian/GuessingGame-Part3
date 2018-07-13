@@ -31,7 +31,7 @@ Game.prototype.isLower = function() {
 
 Game.prototype.playersGuessSubmission = function(guess) {
   if (guess < 1 || guess > 100 || isNaN(guess)) {
-    $("#title").text("That is an invalid guess. Guess again.");
+    $("#title").text("That is an invalid guess.");
     throw "That is an invalid guess.";
   }
   this.playersGuess = guess;
@@ -75,13 +75,12 @@ function submitGuess(game) {
   $("#input").val("");
   const output = game.playersGuessSubmission(playerInput);
   if (output === "You have already guessed that number.") {
-    $("#title").text("Already guessed that number! Guess again.");
+    $("#title").text("Already guessed that number!");
   } else {
     if (output === "You Win!" || output === "You Lose.") {
       $("#title").text(output);
       $("#subtitle").text("Reset to play again.");
       $("#submit, #hint").prop("disabled", true);
-      $("#message").text("");
     }
     if (output !== "You Win!") {
       $("ul li:nth-child(" + game.pastGuesses.length + ")").text(playerInput);
@@ -89,9 +88,11 @@ function submitGuess(game) {
         return;
       }
       if (game.isLower()) {
-        $("#message").text(output + " Guess Higher!");
+        $("#title").text(output);
+        $("#subtitle").text("Guess Higher.");
       } else {
-        $("#message").text(output + " Guess Lower!");
+        $("#title").text(output);
+        $("#subtitle").text("Guess Lower.");
       }
     }
   }
@@ -114,7 +115,6 @@ $(document).ready(function() {
     $(".guess").text("!");
     $("#submit, #hint").prop("disabled", false);
     $("#input").val("");
-    $("#message").text("");
   });
   $("#hint").click(function() {
     const hint = game.provideHint();
