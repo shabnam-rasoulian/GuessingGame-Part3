@@ -113,6 +113,7 @@ $(document).ready(function() {
     $(".guess").text("!");
     $("#submit, #hint").prop("disabled", false);
     $("#input").val("");
+    $("#message").text("");
   });
   $("#hint").click(function() {
     const hint = game.provideHint();
