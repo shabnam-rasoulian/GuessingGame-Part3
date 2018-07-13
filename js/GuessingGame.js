@@ -112,6 +112,7 @@ $(document).ready(function() {
     $("#subtitle").text("Guess a number between 1-100!");
     $(".guess").text("!");
     $("#submit, #hint").prop("disabled", false);
+    $("#input").val("");
   });
   $("#hint").click(function() {
     const hint = game.provideHint();
