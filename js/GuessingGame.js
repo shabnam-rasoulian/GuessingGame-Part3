@@ -41,6 +41,7 @@ Game.prototype.playersGuessSubmission = function(guess) {
 Game.prototype.checkGuess = function() {
   let dif = this.difference();
   if (!dif) {
+    this.pastGuesses.length = 5;
     return "You Win!";
   }
   if (this.pastGuesses.includes(this.playersGuess)) {
@@ -66,11 +67,18 @@ Game.prototype.provideHint = function() {
   return shuffle([this.winningNumber, generateWinningNumber(), generateWinningNumber()]);
 };
 
+Game.prototype.finished = function() {
+  return this.pastGuesses.length >= 5;
+}
+
 function newGame() {
   return new Game();
 }
 
 function submitGuess(game) {
+  if (game.finished()) {
+    return;
+  }
   const playerInput = $("#input").val();
   $("#input").val("");
   const output = game.playersGuessSubmission(playerInput);
@@ -103,9 +111,11 @@ $(document).ready(function() {
   $("#submit").click(function() {
     submitGuess(game);
   });
-  $("#input").keypress(function(event) {
-    if (event.which === 13) {
+  $("#input").keypress(function(e) {
+    if (e.which === 13) {
+      e.preventDefault();
       submitGuess(game);
+      return false;
     }
   });
   $("#reset").click(function() {
