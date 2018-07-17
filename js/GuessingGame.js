@@ -64,7 +64,14 @@ Game.prototype.checkGuess = function() {
 };
 
 Game.prototype.provideHint = function() {
-  return shuffle([this.winningNumber, generateWinningNumber(), generateWinningNumber()]);
+  const hint = [this.winningNumber];
+  while (hint.length < 3) {
+    const number = generateWinningNumber();
+    if (!(hint.includes(number))) {
+      hint.push(number);
+    }
+  }
+  return shuffle(hint);
 };
 
 Game.prototype.finished = function() {
