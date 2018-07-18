@@ -69,7 +69,7 @@ main {
 	transition: all .1s linear;
 }
 
-#submit:hover {
+#submit:hover, .btn:hover {
   background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
 	background-image: linear-gradient(top, #fff, #f4f1ee);
   color:#83d244;
@@ -122,11 +122,6 @@ ul {
 	box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
   -webkit-transition: all .1s linear;
   transition: all .1s linear;
-}
-
-.btn:hover {
-  background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
-	background-image: linear-gradient(top, #fff, #f4f1ee);
 }
 
 #hint:hover {
