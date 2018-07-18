@@ -60,7 +60,20 @@ main {
   position: absolute;
   top: 150px;
   left: 500px;
-  font-size: 1.5em;
+  font-size: 1.8em;
+  cursor: pointer;
+  background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+	background-image: linear-gradient(top, #f4f1ee, #fff);
+	box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
+	float:left;
+	-webkit-transition: all .1s linear;
+	transition: all .1s linear;
+}
+
+#submit:hover {
+  background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
+	background-image: linear-gradient(top, #fff, #f4f1ee);
+  color:#83d244;
 }
 
 footer {
@@ -99,8 +112,30 @@ ul {
   height: 30%;
   width: 100px;
   font-size: 1.2em;
-  border: solid 1px #fff;
-  border-radius: 5%;
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+	background-image: linear-gradient(top, #f4f1ee, #fff);
+	box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
+  -webkit-transition: all .1s linear;
+  transition: all .1s linear;
+}
+
+.btn:hover {
+  background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
+	background-image: linear-gradient(top, #fff, #f4f1ee);
+}
+
+#hint:hover {
+  color: #ba860d;
+}
+
+#reset:hover {
+  color: #ba2f0d;
 }
 
 .contact {
