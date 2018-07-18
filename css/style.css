@@ -78,7 +78,7 @@ main {
 #submit:hover, .btn:hover {
   background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
 	background-image: linear-gradient(top, #fff, #f4f1ee);
-  color:#83d244;
+  color: #32d7da;
 }
 
 footer {
@@ -130,11 +130,11 @@ ul {
 }
 
 #hint:hover {
-  color: #ba860d;
+  color: #aaa;
 }
 
 #reset:hover {
-  color: #ba2f0d;
+  color: #f6546a;
 }
 
 .contact {
