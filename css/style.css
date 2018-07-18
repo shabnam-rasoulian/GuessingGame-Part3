@@ -50,7 +50,13 @@ main {
   width: 200px;
   border-radius: 50%;
   font-size: 4.5em;
-  border: none;
+}
+
+#input, .guess {
+  border: 1px solid #00b9bc;
+  box-shadow: inset 1px 1px 4px #00a4a7;
+  -moz-box-shadow: inset 1px 1px 4px #00a4a7;
+  -webkit-box-shadow: inset 1px 1px 4px #00a4a7;
 }
 
 #submit {
@@ -97,7 +103,6 @@ ul {
   font-size: 2em;
   padding: 0 3%;
   margin: auto 3%;
-  border: solid 1px #fff;
   border-radius: 5%;
   background-color: #fff;
 }
