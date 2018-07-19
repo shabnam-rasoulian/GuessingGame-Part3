@@ -18,6 +18,7 @@ function Game() {
   this.playersGuess = null;
   this.pastGuesses = [];
   this.winningNumber = generateWinningNumber();
+  this.finished = false;
 }
 
 // Game methods
@@ -41,7 +42,7 @@ Game.prototype.playersGuessSubmission = function(guess) {
 Game.prototype.checkGuess = function() {
   let dif = this.difference();
   if (!dif) {
-    this.pastGuesses.length = 5;
+    this.finished = true;
     return "You Win!";
   }
   if (this.pastGuesses.includes(this.playersGuess)) {
@@ -49,6 +50,7 @@ Game.prototype.checkGuess = function() {
   }
   this.pastGuesses.push(this.playersGuess);
   if (this.pastGuesses.length === 5) {
+    this.finished = true;
     return "You Lose.";
   }
   if (dif < 10) {
@@ -74,16 +76,12 @@ Game.prototype.provideHint = function() {
   return shuffle(hint);
 };
 
-Game.prototype.finished = function() {
-  return this.pastGuesses.length >= 5;
-}
-
 function newGame() {
   return new Game();
 }
 
 function submitGuess(game) {
-  if (game.finished()) {
+  if (game.finished) {
     return;
   }
   const playerInput = $("#input").val();
