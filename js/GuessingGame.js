@@ -19,6 +19,7 @@ function Game() {
   this.pastGuesses = [];
   this.winningNumber = generateWinningNumber();
   this.finished = false;
+  this.hint = this.provideHint();
 }
 
 // Game methods
@@ -66,14 +67,14 @@ Game.prototype.checkGuess = function() {
 };
 
 Game.prototype.provideHint = function() {
-  const hint = [this.winningNumber];
-  while (hint.length < 3) {
+  this.hint = [this.winningNumber];
+  while (this.hint.length < 3) {
     const number = generateWinningNumber();
-    if (!(hint.includes(number))) {
-      hint.push(number);
+    if (!(this.hint.includes(number))) {
+      this.hint.push(number);
     }
   }
-  return shuffle(hint);
+  return shuffle(this.hint);
 };
 
 function newGame() {
@@ -132,7 +133,7 @@ $(document).ready(function() {
     $("#input").val("");
   });
   $("#hint").click(function() {
-    const hint = game.provideHint();
+    const hint = game.hint;
     $("#title").text("The winning number is " + hint[0] + ", " + hint[1] + " or " + hint[2] + ".");
   });
 });
