@@ -42,14 +42,14 @@ Game.prototype.playersGuessSubmission = function(guess) {
 
 Game.prototype.checkGuess = function() {
   let dif = this.difference();
-  if (!dif) {
-    this.finished = true;
-    return "You Win!";
-  }
   if (this.pastGuesses.includes(this.playersGuess)) {
     return "You have already guessed that number.";
   }
   this.pastGuesses.push(this.playersGuess);
+  if (!dif) {
+    this.finished = true;
+    return "You Win!";
+  }
   if (this.pastGuesses.length === 5) {
     this.finished = true;
     return "You Lose.";
@@ -88,27 +88,25 @@ function submitGuess(game) {
   const playerInput = $("#input").val();
   $("#input").val("");
   const output = game.playersGuessSubmission(playerInput);
+  $("#title").text(output);
   if (output === "You have already guessed that number.") {
-    $("#title").text("Already guessed that number!");
+    return;
+  } 
+  const $li = $("ul li:nth-child(" + game.pastGuesses.length + ")");
+  $li.text(playerInput);
+  if (output === "You Win!" || output === "You Lose.") {
+    $("#submit, #hint").prop("disabled", true);
+  }
+  $subtitle = $("#subtitle");
+  if (output === "You Win!") {
+    $li.css("color", "#f6546a");
+    $subtitle.text("Reset to play more.");
+  } else if (output === "You Lose.") {
+    $subtitle.text("The winning number was " + game.winningNumber + "! Reset to play more.");
+  } else if (game.isLower()) {
+    $subtitle.text("Guess Higher.");
   } else {
-    if (output === "You Win!" || output === "You Lose.") {
-      $("#title").text(output);
-      $("#subtitle").text("Reset to play again.");
-      $("#submit, #hint").prop("disabled", true);
-    }
-    if (output !== "You Win!") {
-      $("ul li:nth-child(" + game.pastGuesses.length + ")").text(playerInput);
-      if (output === "You Lose.") {
-        return;
-      }
-      if (game.isLower()) {
-        $("#title").text(output);
-        $("#subtitle").text("Guess Higher.");
-      } else {
-        $("#title").text(output);
-        $("#subtitle").text("Guess Lower.");
-      }
-    }
+    $subtitle.text("Guess Lower.");
   }
 }
 
