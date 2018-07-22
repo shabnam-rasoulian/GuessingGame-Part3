@@ -95,7 +95,7 @@ function submitGuess(game) {
   const $li = $("ul li:nth-child(" + game.pastGuesses.length + ")");
   $li.text(playerInput);
   if (output === "You Win!" || output === "You Lose.") {
-    $("#submit, #hint").prop("disabled", true);
+    $("#submit, #hint, #input").prop("disabled", true);
   }
   $subtitle = $("#subtitle");
   if (output === "You Win!") {
@@ -127,8 +127,8 @@ $(document).ready(function() {
     $("#title").text("Welcome to Guessing Game!");
     $("#subtitle").text("Guess a number between 1-100!");
     $(".guess").text("!");
-    $("#submit, #hint").prop("disabled", false);
-    $("#input").val("");
+    $("#submit, #hint, #input").removeAttr("disabled");
+    $("ul li").css("color", "");
   });
   $("#hint").click(function() {
     const hint = game.hint;
