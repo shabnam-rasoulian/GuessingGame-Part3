@@ -74,7 +74,7 @@ main {
 	transition: all .1s linear;
 }
 
-#submit:hover, .btn:hover {
+#submit:not([disabled]):hover, .btn:not([disabled]):hover {
   background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
 	background-image: linear-gradient(top, #fff, #f4f1ee);
   color: #32d7da;
@@ -128,11 +128,11 @@ ul {
   transition: all .1s linear;
 }
 
-#hint:hover {
+#hint:not([disabled]):hover {
   color: #aaa;
 }
 
-#reset:hover {
+#reset:not([disabled]):hover {
   color: #f6546a;
 }
 
