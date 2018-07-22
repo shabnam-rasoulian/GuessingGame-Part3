@@ -112,6 +112,9 @@ function submitGuess(game) {
 
 $(document).ready(function() {
   let game = newGame();
+  $("#input").focus(function() {
+    $(this).removeAttr("placeholder");
+  });
   $("#submit").click(function() {
     submitGuess(game);
   });
@@ -124,6 +127,7 @@ $(document).ready(function() {
   });
   $("#reset").click(function() {
     game = newGame();
+    $("#input").attr("placeholder", "?");
     $("#title").text("Welcome to Guessing Game!");
     $("#subtitle").text("Guess a number between 1-100!");
     $(".guess").text("!");
