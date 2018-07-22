@@ -99,7 +99,7 @@ function submitGuess(game) {
   }
   $subtitle = $("#subtitle");
   if (output === "You Win!") {
-    $li.css("color", "#f6546a");
+    $li.addClass("win");
     $subtitle.text("Reset to play more.");
   } else if (output === "You Lose.") {
     $subtitle.text("The winning number was " + game.winningNumber + "! Reset to play more.");
@@ -132,7 +132,7 @@ $(document).ready(function() {
     $("#subtitle").text("Guess a number between 1-100!");
     $(".guess").text("!");
     $("#submit, #hint, #input").removeAttr("disabled");
-    $("ul li").css("color", "");
+    $("ul li").removeClass("win");
   });
   $("#hint").click(function() {
     const hint = game.hint;
